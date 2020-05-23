@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
         data => {
           this.alert.success = {
             status: true,
-            msg: `${data.message}`
+            msg: `${data.message}, Please wait for a sec!`
           };
           this.userService.storeToken(data.token);
           setTimeout(() => {

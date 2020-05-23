@@ -34,5 +34,4 @@ export class UserService {
     const token = this.retrieveToken();
     return token === null || token === undefined ? false : true;
   }
-
 }
