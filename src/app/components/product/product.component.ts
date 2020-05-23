@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 const camel = require('camelcase-keys');
 
 @Component({
@@ -35,7 +35,8 @@ export class ProductComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private route: Router,
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
@@ -72,6 +73,32 @@ export class ProductComponent implements OnInit {
 
   toggleSpinnerProgress() {
     this.spinnerProgress = this.spinnerProgress ? false : true;
+  }
+
+  onDelete(productId: number) {
+    if (confirm(`Please confirm to delete this item?`)) {
+      this.toggleSpinnerProgress()
+      this.productService.deleteById(productId)
+        .subscribe(
+          data => {
+            console.log('Delete success', data);
+            this.productModelBackup = this.productModelBackup.filter(p => p.id !== productId);
+            this.productModel = this.productModelBackup;
+            this.toggleSpinnerProgress();
+          },
+          err => {
+            this.alert.danger = {
+              status: true,
+              msg: err.error.message
+            };
+            this.toggleSpinnerProgress();
+          }
+        );
+    }
+  }
+
+  onSeeDetails(productId: number) {
+    this.router.navigate([productId], {relativeTo: this.route});
   }
 
 }
