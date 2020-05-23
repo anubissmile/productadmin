@@ -3,12 +3,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { ProductComponent } from './components/product/product.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { ProductCreateComponent } from './components/product-create/product-create.component';
 
 
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path: 'product', component: ProductComponent},
+  {path: 'product/create', component: ProductCreateComponent},
   {path: 'product/:productId', component: ProductDetailsComponent},
   {path: '**', component: LoginComponent}
 ];
@@ -22,5 +24,6 @@ export class AppRoutingModule { }
 export const routingComponent = [
   LoginComponent,
   ProductComponent,
-  ProductDetailsComponent
+  ProductDetailsComponent,
+  ProductCreateComponent
 ];
