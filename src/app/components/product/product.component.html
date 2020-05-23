@@ -1,8 +1,8 @@
 <div class="row">
     <div class="col-md-12">
-        <h1>Please login</h1>
+        <h1>Product</h1>
     </div>
-    <div class="col-md-12" *ngIf="alert.success.status || alert.danger.status || alert.warning.status">
+    <div class="col-md-12">
         <div *ngIf="alert.success.status" class="alert alert-success" role="alert">
             {{alert.success.msg}}
         </div>
@@ -15,7 +15,7 @@
     </div>
     <div class="col-md-12">
         <div class="ml-5 mr-5 p-2 bgwhitesmoke">
-            <form (ngSubmit)="onSubmit()">
+            <!-- <form (ngSubmit)="onSubmit()">
                 <div class="form-group">
                     <label for="inp-username">Username</label>
                     <input [(ngModel)]="userModel.username" name="username" type="email" autocomplete="off"
@@ -28,7 +28,7 @@
                         class="form-control" id="inp-password">
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+            </form> -->
         </div>
     </div>
 </div>
