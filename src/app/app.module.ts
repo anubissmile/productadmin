@@ -9,6 +9,7 @@ import { ProductComponent } from './components/product/product.component';
 import { Router, ActivatedRoute, RouterModule } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { UserService } from './services/user.service';
+import { ProductService } from './services/product.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { UserService } from './services/user.service';
     HttpClientModule,
     RouterModule
   ],
-  providers: [UserService],
+  providers: [UserService, ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

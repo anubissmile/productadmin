@@ -1,7 +1,7 @@
 export class ResponseMessage {
 
     public timestamp: string;
-    public messages: string;
+    public message: string;
 
     constructor() {}
 }

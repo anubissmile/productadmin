@@ -30,7 +30,6 @@ export class LoginComponent implements OnInit {
 
   constructor(
     public router: Router,
-    public activateRoute: ActivatedRoute,
     public http: HttpClient,
     public userService: UserService) { }
 
@@ -43,8 +42,9 @@ export class LoginComponent implements OnInit {
         data => {
           this.alert.success = {
             status: true,
-            msg: 'Authenticate successfully, Please wait.'
+            msg: `${data.message}`
           };
+          this.userService.storeToken(data.token);
           setTimeout(() => {
             this.router.navigate(['/product']);
           }, 5000);

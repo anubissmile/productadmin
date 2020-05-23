@@ -1,6 +1,9 @@
 <div class="row">
     <div class="col-md-12">
         <h1>Product</h1>
+        <div *ngIf="spinnerProgress" class="spinner-grow text-secondary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
     </div>
     <div class="col-md-12">
         <div *ngIf="alert.success.status" class="alert alert-success" role="alert">
@@ -14,21 +17,48 @@
         </div>
     </div>
     <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3">
+                <form class="form-inline my-2 my-lg-0 text-right">
+                    <input [(ngModel)]="search" (keyup)="searchProduct()" name="search" class="form-control mr-sm-2" type="search" placeholder="name, code" aria-label="Search">
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
         <div class="ml-5 mr-5 p-2 bgwhitesmoke">
-            <!-- <form (ngSubmit)="onSubmit()">
-                <div class="form-group">
-                    <label for="inp-username">Username</label>
-                    <input [(ngModel)]="userModel.username" name="username" type="email" autocomplete="off"
-                        placeholder="Johndoe" class="form-control" id="inp-username" aria-describedby="emailHelp">
-                    <small id="emailHelp" class="form-text text-muted">Anyone can see your username.</small>
-                </div>
-                <div class="form-group">
-                    <label for="inp-password">Password</label>
-                    <input [(ngModel)]="userModel.password" name="password" type="password" placeholder="****"
-                        class="form-control" id="inp-password">
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form> -->
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Product Code</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Manage</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let product of productModel; let i = index">
+                    <th scope="row">{{ i + 1 }}</th>
+                    <td>
+                        {{product.name}}
+                        <br>
+                        <small class="text-muted text-break">
+                            {{product.description}}
+                        </small> 
+                    </td>
+                    <td>{{product.productCode}}</td>
+                    <td>{{product.price}}</td>
+                    <td>
+                        <button type="button" class="m-1 btn btn-success">See</button>
+                        <button type="button" class="m-1 btn btn-danger">Delete</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
         </div>
     </div>
 </div>
